@@ -1,87 +1,25 @@
 {
   "version": 2,
-  "name": "ai-decision-maker",
   "builds": [
     {
       "src": "server.js",
-      "use": "@vercel/node",
-      "config": {
-        "maxLambdaSize": "50mb"
-      }
+      "use": "@vercel/node"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "/server.js"
+      "source": "/api/(.*)",
+      "destination": "/server.js"
     },
     {
-      "src": "/",
-      "dest": "/public/index.html"
-    },
-    {
-      "src": "/([^/]+\\.(css|js|gif|png|jpg|jpeg|svg|ico|woff|woff2|ttf|webp|mp4|webm))",
-      "dest": "/public/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/public/index.html"
+      "source": "/(.*)",
+      "destination": "/public/$1"
     }
   ],
   "env": {
     "GEMINI_API_KEY": "@gemini_api_key",
     "NODE_ENV": "production"
   },
-  "headers": [
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Access-Control-Allow-Methods",
-          "value": "GET, POST, PUT, DELETE, OPTIONS"
-        },
-        {
-          "key": "Access-Control-Allow-Headers",
-          "value": "X-Requested-With, Content-Type, Authorization"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "no-cache, no-store, must-revalidate"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        }
-      ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/favicon.ico",
-      "destination": "/public/favicon.ico"
-    }
-  ],
   "cleanUrls": true,
   "trailingSlash": false
 }
