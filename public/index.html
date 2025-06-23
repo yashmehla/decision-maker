@@ -3,16 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Decision Maker - Smart Choices Made Simple</title>
+    <title>AI Decision Maker - Smart Choices Made Simple | yashmehla</title>
+    <meta name="description" content="AI-powered decision making assistant using Gemini AI. Get smart, instant recommendations for any decision with detailed pros and cons analysis.">
+    <meta name="keywords" content="AI decision maker, artificial intelligence, decision analysis, Gemini AI, yashmehla">
+    <meta name="author" content="yashmehla">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ai-decision-maker.vercel.app/">
+    <meta property="og:title" content="AI Decision Maker - Smart Choices Made Simple">
+    <meta property="og:description" content="AI-powered decision making assistant using Gemini AI">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ai-decision-maker.vercel.app/">
+    <meta property="twitter:title" content="AI Decision Maker - Smart Choices Made Simple">
+    <meta property="twitter:description" content="AI-powered decision making assistant using Gemini AI">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         * {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            overflow-x: hidden;
         }
         
         .noise-bg {
@@ -23,9 +43,10 @@
             height: 100%;
             background-image: url('./noise.gif');
             background-repeat: repeat;
-            opacity: 0.05;
+            opacity: 0.03;
             z-index: -2;
             pointer-events: none;
+            mix-blend-mode: multiply;
         }
         
         .gradient-bg {
@@ -35,41 +56,44 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(135deg, 
-                rgba(99, 102, 241, 0.1) 0%, 
-                rgba(168, 85, 247, 0.1) 25%,
-                rgba(236, 72, 153, 0.1) 50%,
-                rgba(59, 130, 246, 0.1) 75%,
-                rgba(16, 185, 129, 0.1) 100%);
+                rgba(99, 102, 241, 0.08) 0%, 
+                rgba(168, 85, 247, 0.08) 25%,
+                rgba(236, 72, 153, 0.08) 50%,
+                rgba(59, 130, 246, 0.08) 75%,
+                rgba(16, 185, 129, 0.08) 100%);
             z-index: -1;
             pointer-events: none;
         }
         
         .glass {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
         }
         
         .glass-white {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
         }
         
         .glass-dark {
-            background: rgba(0, 0, 0, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
         
         .glow {
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.25);
         }
         
         .glow-green {
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.25);
         }
         
         .floating {
@@ -78,31 +102,51 @@
         
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-12px); }
         }
         
         .pulse-glow {
-            animation: pulse-glow 2s ease-in-out infinite alternate;
+            animation: pulse-glow 3s ease-in-out infinite alternate;
         }
         
         @keyframes pulse-glow {
-            from { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
-            to { box-shadow: 0 0 30px rgba(99, 102, 241, 0.5); }
+            from { 
+                box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+                transform: scale(1);
+            }
+            to { 
+                box-shadow: 0 0 40px rgba(99, 102, 241, 0.5);
+                transform: scale(1.02);
+            }
         }
         
         .slide-up {
-            animation: slide-up 0.6s ease-out;
+            animation: slide-up 0.8s ease-out;
         }
         
         @keyframes slide-up {
             from { 
                 opacity: 0; 
-                transform: translateY(30px); 
+                transform: translateY(40px); 
             }
             to { 
                 opacity: 1; 
                 transform: translateY(0); 
             }
+        }
+        
+        .fade-in {
+            animation: fade-in 0.6s ease-out;
+        }
+        
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .custom-scrollbar {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(99, 102, 241, 0.5) transparent;
         }
         
         .custom-scrollbar::-webkit-scrollbar {
@@ -125,92 +169,181 @@
         
         input:focus, textarea:focus, select:focus {
             outline: none;
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+            border-color: rgba(99, 102, 241, 0.5);
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
         }
         
         .btn-primary:hover {
-            background: linear-gradient(135deg, #5855eb, #7c3aed);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+            background: linear-gradient(135deg, #5855eb, #7c3aed, #db2777);
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.4);
         }
         
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.16);
             transition: all 0.3s ease;
         }
         
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.16);
             transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .option-input-group {
+            transition: all 0.3s ease;
+        }
+        
+        .option-input-group:hover {
+            transform: translateX(4px);
+        }
+        
+        .progress-ring {
+            transition: stroke-dasharray 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
         }
         
         @media (max-width: 768px) {
-            .glass {
-                backdrop-filter: blur(15px);
+            .glass, .glass-white {
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
             }
+            
+            .floating {
+                animation-duration: 4s;
+            }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .floating, .pulse-glow, .slide-up, .fade-in {
+                animation: none;
+            }
+        }
+        
+        /* Loading spinner */
+        .spinner {
+            border: 4px solid rgba(99, 102, 241, 0.1);
+            border-left: 4px solid #6366f1;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
-<body class="min-h-screen overflow-x-hidden">
+<body class="min-h-screen overflow-x-hidden bg-gray-50">
     <!-- Background layers -->
     <div class="noise-bg"></div>
     <div class="gradient-bg"></div>
     
     <div class="relative min-h-screen custom-scrollbar">
         <!-- Header -->
-        <header class="text-center pt-12 pb-8 px-4">
+        <header class="text-center pt-16 pb-12 px-4">
             <div class="floating">
-                <div class="inline-flex items-center justify-center mb-6 glass rounded-full p-4 glow">
-                    <i class="fas fa-brain text-4xl text-indigo-400 mr-3"></i>
-                    <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                        AI Decision Maker
-                    </h1>
+                <div class="inline-flex items-center justify-center mb-8 glass rounded-full p-6 glow">
+                    <i class="fas fa-brain text-5xl text-indigo-500 mr-4"></i>
+                    <div class="text-left">
+                        <h1 class="text-4xl md:text-6xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent leading-tight">
+                            AI Decision Maker
+                        </h1>
+                        <p class="text-sm text-gray-500 mt-1">by @yashmehla</p>
+                    </div>
                 </div>
             </div>
-            <p class="text-lg md:text-xl text-gray-600 font-light max-w-2xl mx-auto leading-relaxed">
-                Harness the power of AI to make smarter decisions with confidence
+            <p class="text-xl md:text-2xl text-gray-600 font-light max-w-3xl mx-auto leading-relaxed mb-6">
+                Harness the power of <span class="font-semibold text-indigo-600">Gemini AI</span> to make smarter decisions with confidence
             </p>
-            <div class="mt-4 glass-dark rounded-full px-4 py-2 inline-block">
-                <span class="text-sm text-gray-500">✨ Powered by Gemini AI</span>
+            <div class="flex flex-wrap justify-center gap-4 mt-6">
+                <div class="glass-dark rounded-full px-6 py-3 inline-block">
+                    <span class="text-sm text-gray-600 flex items-center">
+                        <i class="fas fa-robot mr-2 text-indigo-500"></i>
+                        Powered by Gemini AI
+                    </span>
+                </div>
+                <div class="glass-dark rounded-full px-6 py-3 inline-block">
+                    <span class="text-sm text-gray-600 flex items-center">
+                        <i class="fas fa-clock mr-2 text-green-500"></i>
+                        <span id="currentTime">2025-06-23 11:38:55 UTC</span>
+                    </span>
+                </div>
             </div>
         </header>
 
-        <div class="container mx-auto px-4 pb-16 max-w-5xl">
+        <div class="container mx-auto px-4 pb-16 max-w-6xl">
             <!-- Main Decision Form -->
-            <div class="glass-white rounded-3xl p-8 md:p-12 mb-8 slide-up">
+            <div class="glass-white rounded-3xl p-8 md:p-12 mb-12 slide-up">
                 <!-- Question Input -->
                 <div class="mb-8">
-                    <label class="block text-sm font-medium text-gray-700 mb-3 flex items-center">
-                        <i class="fas fa-question-circle mr-2 text-indigo-500"></i>
+                    <label class="block text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-question-circle mr-3 text-indigo-500"></i>
                         What decision are you trying to make?
+                        <span class="ml-2 text-sm font-normal text-gray-500">(Required)</span>
                     </label>
                     <div class="relative">
                         <textarea 
                             id="decisionQuestion" 
-                            class="w-full p-6 bg-white/70 backdrop-blur-sm border border-gray-200 rounded-2xl focus:border-indigo-400 transition-all duration-300 text-gray-800 placeholder-gray-400 resize-none"
+                            class="w-full p-6 bg-white/80 backdrop-blur-sm border-2 border-gray-200 rounded-2xl focus:border-indigo-400 transition-all duration-300 text-gray-800 placeholder-gray-400 resize-none text-lg leading-relaxed"
                             rows="4"
-                            placeholder="e.g., Should I take the job offer at Company A or stay at my current job? I need to consider salary, growth opportunities, and work-life balance..."
+                            maxlength="2000"
+                            placeholder="Describe your decision in detail. For example: 'Should I accept the job offer at Company A or stay at my current position? I need to consider salary ($10k increase), growth opportunities, work-life balance, and team culture. The new role offers more responsibility but requires relocation...'"
                         ></textarea>
-                        <div class="absolute bottom-4 right-4 text-xs text-gray-400" id="charCount">0 / 500</div>
+                        <div class="absolute bottom-4 right-4 text-sm text-gray-400 font-medium" id="charCount">0 / 2000</div>
                     </div>
+                    <p class="text-sm text-gray-500 mt-2 flex items-center">
+                        <i class="fas fa-lightbulb mr-2 text-yellow-500"></i>
+                        Tip: The more context you provide, the better the AI can assist you
+                    </p>
                 </div>
 
-                <!-- Category and Context Row -->
-                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <!-- Category and Priority Row -->
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
                     <!-- Decision Category -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-3 flex items-center">
+                        <label class="block text-lg font-semibold text-gray-800 mb-3 flex items-center">
                             <i class="fas fa-tag mr-2 text-purple-500"></i>
                             Category
                         </label>
-                        <select id="decisionCategory" class="w-full p-4 bg-white/70 backdrop-blur-sm border border-gray-200 rounded-xl focus:border-indigo-400 transition-all duration-300">
+                        <select id="decisionCategory" class="w-full p-4 bg-white/80 backdrop-blur-sm border-2 border-gray-200 rounded-xl focus:border-indigo-400 transition-all duration-300 text-gray-800">
                             <option value="general">💭 General Decision</option>
                             <option value="career">💼 Career & Work</option>
                             <option value="relationships">❤️ Relationships</option>
@@ -224,39 +357,64 @@
 
                     <!-- Priority Level -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-3 flex items-center">
+                        <label class="block text-lg font-semibold text-gray-800 mb-3 flex items-center">
                             <i class="fas fa-exclamation-triangle mr-2 text-orange-500"></i>
                             Priority Level
                         </label>
-                        <select id="priorityLevel" class="w-full p-4 bg-white/70 backdrop-blur-sm border border-gray-200 rounded-xl focus:border-indigo-400 transition-all duration-300">
+                        <select id="priorityLevel" class="w-full p-4 bg-white/80 backdrop-blur-sm border-2 border-gray-200 rounded-xl focus:border-indigo-400 transition-all duration-300 text-gray-800">
                             <option value="low">🟢 Low - Take your time</option>
                             <option value="medium" selected>🟡 Medium - Somewhat urgent</option>
                             <option value="high">🔴 High - Need to decide soon</option>
                             <option value="critical">⚡ Critical - Urgent decision</option>
                         </select>
                     </div>
+
+                    <!-- Decision Timeline -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                            <i class="fas fa-calendar mr-2 text-blue-500"></i>
+                            Timeline
+                        </label>
+                        <select id="decisionTimeline" class="w-full p-4 bg-white/80 backdrop-blur-sm border-2 border-gray-200 rounded-xl focus:border-indigo-400 transition-all duration-300 text-gray-800">
+                            <option value="immediate">⚡ Immediate (Today)</option>
+                            <option value="days">📅 Few days</option>
+                            <option value="weeks" selected>📊 Few weeks</option>
+                            <option value="months">🗓️ Few months</option>
+                            <option value="flexible">🔄 Flexible timing</option>
+                        </select>
+                    </div>
                 </div>
 
                 <!-- Options Section -->
                 <div class="mb-8">
-                    <label class="block text-sm font-medium text-gray-700 mb-3 flex items-center">
-                        <i class="fas fa-list mr-2 text-blue-500"></i>
+                    <label class="block text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-list mr-3 text-blue-500"></i>
                         Options to Compare
-                        <span class="ml-2 text-xs text-gray-500">(Optional)</span>
+                        <span class="ml-2 text-sm font-normal text-gray-500">(Optional - Add up to 5 options)</span>
                     </label>
-                    <div id="optionsContainer" class="space-y-3 mb-4">
-                        <div class="flex gap-3 group">
+                    <div id="optionsContainer" class="space-y-4 mb-6">
+                        <div class="flex gap-3 group option-input-group">
                             <div class="relative flex-1">
-                                <input type="text" class="w-full p-4 bg-white/70 backdrop-blur-sm border border-gray-200 rounded-xl focus:border-indigo-400 transition-all duration-300 pr-12" placeholder="Option 1: e.g., Accept the new job offer">
+                                <input 
+                                    type="text" 
+                                    class="w-full p-4 bg-white/80 backdrop-blur-sm border-2 border-gray-200 rounded-xl focus:border-indigo-400 transition-all duration-300 pr-12 text-gray-800" 
+                                    placeholder="Option 1: e.g., Accept the new job offer at Company A"
+                                    maxlength="200"
+                                >
                                 <i class="fas fa-grip-vertical absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-300 group-hover:text-gray-500 transition-colors"></i>
                             </div>
                             <button onclick="removeOption(this)" class="p-4 bg-red-50 hover:bg-red-100 text-red-500 rounded-xl transition-all duration-300 hover:scale-105 opacity-0 group-hover:opacity-100">
                                 <i class="fas fa-times"></i>
                             </button>
                         </div>
-                        <div class="flex gap-3 group">
+                        <div class="flex gap-3 group option-input-group">
                             <div class="relative flex-1">
-                                <input type="text" class="w-full p-4 bg-white/70 backdrop-blur-sm border border-gray-200 rounded-xl focus:border-indigo-400 transition-all duration-300 pr-12" placeholder="Option 2: e.g., Stay at current job">
+                                <input 
+                                    type="text" 
+                                    class="w-full p-4 bg-white/80 backdrop-blur-sm border-2 border-gray-200 rounded-xl focus:border-indigo-400 transition-all duration-300 pr-12 text-gray-800" 
+                                    placeholder="Option 2: e.g., Stay at current job and negotiate better terms"
+                                    maxlength="200"
+                                >
                                 <i class="fas fa-grip-vertical absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-300 group-hover:text-gray-500 transition-colors"></i>
                             </div>
                             <button onclick="removeOption(this)" class="p-4 bg-red-50 hover:bg-red-100 text-red-500 rounded-xl transition-all duration-300 hover:scale-105 opacity-0 group-hover:opacity-100">
@@ -264,32 +422,45 @@
                             </button>
                         </div>
                     </div>
-                    <button onclick="addOption()" class="inline-flex items-center px-4 py-2 btn-secondary text-gray-700 rounded-xl transition-all duration-300 text-sm">
+                    <button onclick="addOption()" class="inline-flex items-center px-6 py-3 btn-secondary text-gray-700 rounded-xl transition-all duration-300 text-sm font-medium">
                         <i class="fas fa-plus mr-2"></i>Add Another Option
                     </button>
                 </div>
 
                 <!-- Additional Context -->
-                <div class="mb-8">
-                    <label class="block text-sm font-medium text-gray-700 mb-3 flex items-center">
-                        <i class="fas fa-info-circle mr-2 text-green-500"></i>
-                        Additional Context
-                        <span class="ml-2 text-xs text-gray-500">(Optional)</span>
+                <div class="mb-10">
+                    <label class="block text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-info-circle mr-3 text-green-500"></i>
+                        Additional Context & Constraints
+                        <span class="ml-2 text-sm font-normal text-gray-500">(Optional)</span>
                     </label>
                     <textarea 
                         id="additionalContext" 
-                        class="w-full p-4 bg-white/70 backdrop-blur-sm border border-gray-200 rounded-xl focus:border-indigo-400 transition-all duration-300 resize-none"
-                        rows="3"
-                        placeholder="Any important details, constraints, deadlines, or specific priorities I should consider?"
+                        class="w-full p-6 bg-white/80 backdrop-blur-sm border-2 border-gray-200 rounded-xl focus:border-indigo-400 transition-all duration-300 resize-none text-gray-800 placeholder-gray-400"
+                        rows="4"
+                        maxlength="1000"
+                        placeholder="Share any important details, constraints, deadlines, budget considerations, personal values, or specific priorities that should influence this decision. The more context you provide, the more personalized and accurate the recommendation will be."
                     ></textarea>
+                    <div class="mt-2 text-sm text-gray-500 flex items-center">
+                        <i class="fas fa-shield-alt mr-2 text-blue-500"></i>
+                        Your information is processed securely and not stored permanently
+                    </div>
                 </div>
 
                 <!-- Action Button -->
-                <button onclick="getDecision()" class="w-full btn-primary text-white py-5 px-8 rounded-2xl text-lg font-semibold pulse-glow">
-                    <i class="fas fa-sparkles mr-3"></i>
-                    Get AI Recommendation
-                    <i class="fas fa-arrow-right ml-3"></i>
-                </button>
+                <div class="text-center">
+                    <button onclick="getDecision()" class="w-full md:w-auto px-12 py-6 btn-primary text-white rounded-2xl text-xl font-bold pulse-glow transition-all duration-300 relative overflow-hidden">
+                        <span class="relative z-10 flex items-center justify-center">
+                            <i class="fas fa-sparkles mr-3 text-2xl"></i>
+                            Get AI Recommendation
+                            <i class="fas fa-arrow-right ml-3 text-xl"></i>
+                        </span>
+                    </button>
+                    <p class="text-sm text-gray-500 mt-4 flex items-center justify-center">
+                        <i class="fas fa-keyboard mr-2"></i>
+                        Press Ctrl+Enter to analyze your decision quickly
+                    </p>
+                </div>
             </div>
 
             <!-- Results Section -->
@@ -298,32 +469,49 @@
             </div>
 
             <!-- Quick Stats -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                <div class="glass-white rounded-2xl p-6 text-center">
-                    <div class="text-2xl font-bold text-indigo-600" id="totalDecisions">0</div>
-                    <div class="text-sm text-gray-600">Total Decisions</div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                <div class="glass-white rounded-2xl p-6 text-center stat-card">
+                    <div class="text-3xl font-bold text-indigo-600 mb-2" id="totalDecisions">0</div>
+                    <div class="text-sm text-gray-600 font-medium">Total Decisions</div>
+                    <div class="w-full bg-indigo-100 rounded-full h-2 mt-3">
+                        <div class="bg-indigo-500 h-2 rounded-full" style="width: 0%" id="decisionsProgress"></div>
+                    </div>
                 </div>
-                <div class="glass-white rounded-2xl p-6 text-center">
-                    <div class="text-2xl font-bold text-green-600">95%</div>
-                    <div class="text-sm text-gray-600">Avg Confidence</div>
+                <div class="glass-white rounded-2xl p-6 text-center stat-card">
+                    <div class="text-3xl font-bold text-green-600 mb-2">95%</div>
+                    <div class="text-sm text-gray-600 font-medium">Avg Confidence</div>
+                    <div class="w-full bg-green-100 rounded-full h-2 mt-3">
+                        <div class="bg-green-500 h-2 rounded-full" style="width: 95%"></div>
+                    </div>
                 </div>
-                <div class="glass-white rounded-2xl p-6 text-center">
-                    <div class="text-2xl font-bold text-purple-600">2.3s</div>
-                    <div class="text-sm text-gray-600">Avg Response</div>
+                <div class="glass-white rounded-2xl p-6 text-center stat-card">
+                    <div class="text-3xl font-bold text-purple-600 mb-2" id="avgResponseTime">2.3s</div>
+                    <div class="text-sm text-gray-600 font-medium">Avg Response</div>
+                    <div class="w-full bg-purple-100 rounded-full h-2 mt-3">
+                        <div class="bg-purple-500 h-2 rounded-full" style="width: 80%"></div>
+                    </div>
                 </div>
-                <div class="glass-white rounded-2xl p-6 text-center">
-                    <div class="text-2xl font-bold text-blue-600">🤖</div>
-                    <div class="text-sm text-gray-600">AI Powered</div>
+                <div class="glass-white rounded-2xl p-6 text-center stat-card">
+                    <div class="text-3xl mb-2">🤖</div>
+                    <div class="text-sm text-gray-600 font-medium">AI Powered</div>
+                    <div class="text-xs text-gray-500 mt-1">Gemini Pro</div>
                 </div>
             </div>
 
             <!-- Decision History -->
-            <div class="glass-white rounded-3xl p-8">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
-                    <i class="fas fa-history mr-3 text-indigo-500"></i>
-                    Recent Decisions
-                    <span class="ml-auto text-sm font-normal text-gray-500">Last 10 decisions</span>
-                </h2>
+            <div class="glass-white rounded-3xl p-8 fade-in">
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-3xl font-bold text-gray-800 flex items-center">
+                        <i class="fas fa-history mr-4 text-indigo-500"></i>
+                        Recent Decisions
+                    </h2>
+                    <div class="flex items-center gap-4">
+                        <span class="text-sm font-medium text-gray-500">Last 10 decisions</span>
+                        <button onclick="clearHistory()" class="text-sm text-red-500 hover:text-red-700 transition-colors">
+                            <i class="fas fa-trash mr-1"></i>Clear All
+                        </button>
+                    </div>
+                </div>
                 <div id="decisionHistory" class="space-y-4 max-h-96 overflow-y-auto custom-scrollbar">
                     <!-- History items will be populated here -->
                 </div>
@@ -331,14 +519,25 @@
         </div>
 
         <!-- Footer -->
-        <footer class="text-center py-8 px-4">
-            <div class="glass-dark rounded-full px-6 py-3 inline-block">
-                <p class="text-sm text-gray-500">
-                    Made with ❤️ by <span class="font-medium text-indigo-400">@yashmehla</span> • Powered by Gemini AI
+        <footer class="text-center py-12 px-4">
+            <div class="glass-dark rounded-full px-8 py-4 inline-block mb-4">
+                <p class="text-sm text-gray-600 flex items-center">
+                    Made with <i class="fas fa-heart text-red-500 mx-2"></i> by 
+                    <a href="https://github.com/yashmehla" target="_blank" class="font-semibold text-indigo-500 hover:text-indigo-700 transition-colors ml-1">
+                        @yashmehla
+                    </a>
+                    <span class="mx-3">•</span>
+                    Powered by <span class="font-semibold text-purple-500">Gemini AI</span>
                 </p>
+            </div>
+            <div class="text-xs text-gray-400">
+                <p>Current UTC Time: <span id="footerTime">2025-06-23 11:38:55</span></p>
             </div>
         </footer>
     </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="fixed top-4 right-4 z-50 space-y-2"></div>
 
     <script src="script.js"></script>
 </body>
